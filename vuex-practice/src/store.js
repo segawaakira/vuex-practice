@@ -17,8 +17,11 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    increment (state, n) {
-      state.count += n
+    increment (state) {
+      state.count++
+    },
+    incrementBy (state, { amount }) {
+      state.count += amount
     }
   },
   actions: {

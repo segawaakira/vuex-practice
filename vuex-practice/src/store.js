@@ -5,7 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    products: [],
+    products: [
+      { id: 1, name: 'Hoge', stock: 0 },
+      { id: 2, name: 'Fuga', stock: 3 },
+      { id: 3, name: 'Piyo', stock: 0 }
+    ],
     count: 4,
     loggedInUser: {
       name: 'John',
@@ -17,5 +21,10 @@ export default new Vuex.Store({
   },
   actions: {
     // put asynchronous functions that can call one or more mutation functions
+  },
+  getters: {
+    depletedProducts: state => {
+      return state.products.filter(product => product.stock <= 0)
+    }
   }
 })

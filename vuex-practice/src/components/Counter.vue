@@ -1,19 +1,18 @@
 <template>
   <div>
-    <p>Welcome, {{ loggedInUser.name }}.</p>
-    <p>Count: {{ count }} !Count is {{ parity }}.</p>
+    <ul>
+      <li v-for="(product, i) in depletedProducts" :key="i">
+          name: {{ product.name }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   computed: {
-    ...mapState([
-      'count', 'loggedInUser'
-    ]),
-    parity () {
-      return this.count % 2 === 0 ? 'even' : 'odd'
+    depletedProducts () {
+      return this.$store.getters.depletedProducts
     }
   }
 }

@@ -9,11 +9,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   computed: {
-    depletedProducts () {
-      return this.$store.getters.depletedProducts
-    }
+    ...mapGetters([
+      'depletedProducts',
+      'anotherGetter'
+    ])
   }
 }
 </script>

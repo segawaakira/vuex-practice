@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      count: 0
-    };
+  computed: {
+    count () {
+      return this.$store.state.count
+    }
   }
-};
+}
 </script>

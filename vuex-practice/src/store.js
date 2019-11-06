@@ -5,7 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    // put variables and collections here
+    products: [],
+    count: 5,
+    loggedInUser: {
+      name: 'John',
+      role: 'Admin'
+    }
   },
   mutations: {
     // put sychronous functions for changing state e.g. add, edit, delete

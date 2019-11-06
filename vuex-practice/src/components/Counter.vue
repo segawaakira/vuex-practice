@@ -6,17 +6,27 @@
           name: {{ product.name }}
       </li>
     </ul>
+    <p>{{ count }}</p>
+    <button v-on:click="updateCount">increment</button>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   computed: {
+    ...mapState([
+      'count', 'loggedInUser'
+    ]),
     ...mapGetters([
       'depletedProducts',
       'getProductById'
     ])
+  },
+  methods: {
+    updateCount () {
+      this.$store.commit('increment')
+    }
   }
 }
 </script>

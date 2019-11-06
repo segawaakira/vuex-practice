@@ -17,7 +17,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    // put sychronous functions for changing state e.g. add, edit, delete
+    increment (state) {
+      state.count++
+    }
   },
   actions: {
     // put asynchronous functions that can call one or more mutation functions

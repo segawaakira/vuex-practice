@@ -25,10 +25,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    increment: context => {
+    increment: ({ commit }) => commit('increment'),
+    incrementAsync: ({ commit, state }) => {
       return new Promise(resolve => setTimeout(() => {
-        context.commit('increment')
-        resolve(context.state.count)
+        commit('increment')
+        resolve(state.count)
       }, 1000))
     }
   },

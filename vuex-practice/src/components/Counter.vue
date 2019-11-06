@@ -8,12 +8,12 @@
     </ul>
     <p>{{ count }}</p>
     <button v-on:click="increment">increment</button>
-    <button v-on:click="incrementBy({ amount: 2 })">increment + 2</button>
+    <button v-on:click="incrementAsync">incrementAsync</button>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapState([
@@ -28,9 +28,13 @@ export default {
     updateCount () {
       this.$store.commit('increment', { amount: 25 })
     },
-    async increment () {
-      console.log(await this.$store.dispatch('increment'))
-    }
+    ...mapActions([
+      'increment',
+      'incrementAsync'
+    ])
+    // async increment () {
+    //   console.log(await this.$store.dispatch('increment'))
+    // }
     // ...mapMutations([
     //   'increment',
     //   'incrementBy'

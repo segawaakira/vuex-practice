@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     products: [],
-    count: 5,
+    count: 4,
     loggedInUser: {
       name: 'John',
       role: 'Admin'

@@ -25,6 +25,9 @@ export default new Vuex.Store({
   getters: {
     depletedProducts: state => {
       return state.products.filter(product => product.stock <= 0)
+    },
+    getProductById: state => id => {
+      return state.products.find(product => product.id === id)
     }
   }
 })

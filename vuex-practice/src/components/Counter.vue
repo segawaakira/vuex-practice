@@ -1,5 +1,6 @@
 <template>
   <div>
+    product1: {{ getProductById(2).name }}
     <ul>
       <li v-for="(product, i) in depletedProducts" :key="i">
           name: {{ product.name }}
@@ -14,7 +15,7 @@ export default {
   computed: {
     ...mapGetters([
       'depletedProducts',
-      'anotherGetter'
+      'getProductById'
     ])
   }
 }

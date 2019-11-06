@@ -20,25 +20,19 @@ export default new Vuex.Store({
     increment (state) {
       state.count++
     },
-    incrementBy (state, { amount }) {
-      state.count += amount
+    decrement (state) {
+      state.count--
     }
   },
   actions: {
     increment: ({ commit }) => commit('increment'),
-    incrementAsync: ({ commit, state }) => {
-      return new Promise(resolve => setTimeout(() => {
-        commit('increment')
-        resolve(state.count)
-      }, 1000))
+    decrement: ({ commit }) => commit('decrement'),
+    incrementIfOdd: ({ commit, getters }) => getters.parity === 'odd' ? commit('increment') : false,
+    incrementAsync: ({ commit }) => {
+      setTimeout(() => { commit('increment') }, 1000)
     }
   },
   getters: {
-    depletedProducts: state => {
-      return state.products.filter(product => product.stock <= 0)
-    },
-    getProductById: state => id => {
-      return state.products.find(product => product.id === id)
-    }
+    parity: state => state.count % 2 === 0 ? 'even' : 'odd'
   }
 })

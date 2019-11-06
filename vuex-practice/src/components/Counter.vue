@@ -1,28 +1,22 @@
 <template>
   <div>
-    product1: {{ getProductById(2).name }}
-    <ul>
-      <li v-for="(product, i) in depletedProducts" :key="i">
-          name: {{ product.name }}
-      </li>
-    </ul>
-    <p>{{ count }}</p>
-    <button v-on:click="increment">increment</button>
-    <button v-on:click="incrementAsync">incrementAsync</button>
+    <p>Clicked {{ count }} times! Count is {{ parity }}.</p>
+    <button v-on:click="increment">Increment</button>
+    <button v-on:click="decrement">Decrement</button>
+    <button v-on:click="incrementIfOdd">Increment if Odd</button>
+    <button v-on:click="incrementAsync">Increment Async</button>
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
+  name: 'Counter',
   computed: {
     ...mapState([
       'count', 'loggedInUser'
     ]),
-    ...mapGetters([
-      'depletedProducts',
-      'getProductById'
-    ])
+    ...mapGetters(['parity'])
   },
   methods: {
     updateCount () {
@@ -30,6 +24,8 @@ export default {
     },
     ...mapActions([
       'increment',
+      'decrement',
+      'incrementIfOdd',
       'incrementAsync'
     ])
     // async increment () {

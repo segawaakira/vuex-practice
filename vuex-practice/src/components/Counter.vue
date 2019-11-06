@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapState([
@@ -28,10 +28,13 @@ export default {
     updateCount () {
       this.$store.commit('increment', { amount: 25 })
     },
-    ...mapMutations([
-      'increment',
-      'incrementBy'
-    ])
+    async increment () {
+      console.log(await this.$store.dispatch('increment'))
+    }
+    // ...mapMutations([
+    //   'increment',
+    //   'incrementBy'
+    // ])
   }
 }
 </script>

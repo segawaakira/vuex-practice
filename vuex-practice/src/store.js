@@ -25,7 +25,12 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    // put asynchronous functions that can call one or more mutation functions
+    increment: context => {
+      return new Promise(resolve => setTimeout(() => {
+        context.commit('increment')
+        resolve(context.state.count)
+      }, 1000))
+    }
   },
   getters: {
     depletedProducts: state => {

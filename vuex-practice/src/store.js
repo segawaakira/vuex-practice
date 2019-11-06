@@ -10,15 +10,15 @@ export default new Vuex.Store({
       { id: 2, name: 'Fuga', stock: 3 },
       { id: 3, name: 'Piyo', stock: 0 }
     ],
-    count: 4,
+    count: 0,
     loggedInUser: {
       name: 'John',
       role: 'Admin'
     }
   },
   mutations: {
-    increment (state) {
-      state.count++
+    increment (state, n) {
+      state.count += n
     }
   },
   actions: {

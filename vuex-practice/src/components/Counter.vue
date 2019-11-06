@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     updateCount () {
-      this.$store.commit('increment')
+      this.$store.commit('increment', 25)
     }
   }
 }
